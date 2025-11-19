@@ -38,11 +38,45 @@ public class studentoperations {
             switch (choice) {
 
                 case 1:
-                	break;
-                   
+                	
+                	 System.out.print("Enter ID: ");
+                     int id = sc.nextInt();
+                     sc.nextLine();
+
+                     System.out.print("Enter Name: ");
+                     String name = sc.nextLine();
+
+                     System.out.print("Enter Standard: ");
+                     int standard = sc.nextInt();
+
+                     System.out.print("Enter Marks: ");
+                     double marks = sc.nextDouble();
+
+                     Student newStudent = new Student(id, name, standard, marks);
+
+                     et.begin();
+                     em.persist(newStudent);
+                     et.commit();
+
+                     System.out.println("✔ Student added successfully!");
+                     break;
+
 
                 case 2:
-                	break;
+                	
+                	System.out.print("Enter Student ID: ");
+                    int findId = sc.nextInt();
+
+                    Student found = em.find(Student.class, findId);
+
+                    if (found != null) {
+                        System.out.println(found);
+                    } else {
+                        System.out.println("❌ Student not found!");
+                    }
+                    break;
+
+
                 case 3:
                    break;
 
