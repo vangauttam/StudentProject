@@ -8,9 +8,10 @@ import javax.persistence.Id;
 @Entity
 public class StudentEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
 
     private String name;
     private int age;
