@@ -17,13 +17,44 @@ public class StudentOperations implements Student {
 
     @Override
     public void addStudent() {
-        // your code here
-    	
+
+
+        System.out.print("Enter student name: ");
+        String name = sc.next();
+
+        System.out.print("Enter student Age: ");
+        int age = sc.nextInt();
+
+        StudentEntity stu = new StudentEntity();
+        stu.setName(name);
+        stu.setAge(age);
+
+        et.begin();
+        em.persist(stu);
+        et.commit();
+
+        System.out.println("Student Added Successfully!");
+
     }
 
     @Override
     public void findStudentById() {
-        // your code here
+        
+    	System.out.print("Enter Student ID: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        StudentEntity stu = em.find(StudentEntity.class, id);
+
+        if (stu != null) {
+            System.out.println("\n--- Student Found ---");
+            System.out.println("ID       : " + stu.getId());
+            System.out.println("Name     : " + stu.getName());
+            System.out.println("Age : " + stu.getAge());
+            
+        } else {
+            System.out.println("Student Not Found!");
+        }
     }
 
     @Override
